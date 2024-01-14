@@ -1,0 +1,6 @@
+bin/moon filter=lfs diff=lfs merge=lfs -text
+bin/moonc filter=lfs diff=lfs merge=lfs -text
+bin/moondoc filter=lfs diff=lfs merge=lfs -text
+bin/moonfmt filter=lfs diff=lfs merge=lfs -text
+bin/mooninfo filter=lfs diff=lfs merge=lfs -text
+bin/moonrun filter=lfs diff=lfs merge=lfs -text
