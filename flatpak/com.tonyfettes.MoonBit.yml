@@ -1,0 +1,50 @@
+id: com.tonyfettes.MoonBit
+runtime: org.freedesktop.Platform
+runtime-version: '23.08'
+sdk: org.freedesktop.Sdk
+command: moon.sh
+finish-args:
+  - --share=network
+  - --persist=.moon
+modules:
+  - name: moonbit
+    buildsystem: simple
+    build-commands:
+      - install -D moon     /app/bin/moon
+      - install -D moonc    /app/bin/moonc
+      - install -D moonfmt  /app/bin/moonfmt
+      - install -D moonrun  /app/bin/moonrun
+      - install -D mooninfo /app/bin/mooninfo
+      - install -D moondoc  /app/bin/moondoc
+      - install -D moon.sh  /app/bin/moon.sh
+    sources:
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/moon
+        sha256: 6fd49f2f93ef9e17687b14a997935394151daeabc696a7c8980609799742030a
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/moonc
+        sha256: ada7ebc1b125e2a3faa3f4d481cc2e25a90bf62e1d6e078b7e6724a7a40c0824
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/moonfmt
+        sha256: 8c27894d592c910aa52f5235fa55234652b18be6a30022ce05adbaf47facb974
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/moonrun
+        sha256: 6005aa72c4a520da457674e9052259b8e08d5f788a1636f0f7c99bd7c0891b64
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/mooninfo
+        sha256: 102ff20c3347dc2353bacd071c49da98d6a76e86a783e0f977151ac7ce925083
+      - type: file
+        url: https://cli.moonbitlang.com/ubuntu_x86/moondoc
+        sha256: 304d7f4cfff94c6f78b572310d84aa42002339fa374b679022f872bc4217af55
+      - type: script
+        commands:
+          - mkdir -p ~/.moon
+          - moon $@
+        dest-filename: moon.sh
+  - name: git
+    make-install-args:
+      - NO_INSTALL_HARDLINKS=1
+    sources:
+      - type: archive
+        url: https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.43.0.tar.xz
+        sha256: 5446603e73d911781d259e565750dcd277a42836c8e392cac91cf137aa9b76ec
